@@ -118,6 +118,258 @@
 .map3d-loading{padding:24px;color:#c8d6e2;text-align:center;font-size:.9rem}
 @media(max-width:700px){.map3d-frame{height:780px}.map3d-toolbar .btn{width:100%}.sport-extra img{max-height:150px}}
 
+
+/* ==============================================================
+   RESPONSIVE REFINEMENT — COBOLJA Uruguay 2026
+   Optimizado para escritorio, tablet y teléfonos pequeños.
+   Este bloque va al final para que prevalezca sobre estilos previos.
+   ============================================================== */
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
+}
+img, svg, video, canvas, iframe { max-width: 100%; }
+.wrap, .panel, .feature-card, .export-panel, .recipe-explorer,
+.map3d-shell, .question-card, .argument-card, .law-box { min-width: 0; }
+button, a, input, select { touch-action: manipulation; }
+button, a { -webkit-tap-highlight-color: transparent; }
+
+/* Tablet: la navegación completa pasa a un menú desplegable para no cortar enlaces. */
+@media (max-width: 1100px) {
+  .topbar { height: 76px; }
+  .topbar-inner { gap: 10px; }
+  .brand { flex: 0 0 auto; min-width: 0; font-size: .94rem; }
+  .top-actions { margin-left: auto; flex: 0 0 auto; }
+  .menu-btn { display: grid; }
+  .search-btn { display: grid; }
+  .nav {
+    display: none;
+    position: absolute;
+    top: 76px;
+    left: 0;
+    right: 0;
+    z-index: 60;
+    width: 100%;
+    max-height: calc(100dvh - 76px);
+    padding: 10px 18px 16px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background: rgba(247,245,239,.98);
+    border-bottom: 1px solid rgba(16,38,61,.12);
+    box-shadow: 0 18px 35px rgba(10,28,49,.13);
+    backdrop-filter: blur(18px);
+  }
+  .nav.open { display: flex; }
+  .nav a {
+    display: block;
+    white-space: normal;
+    padding: 11px 9px;
+    font-size: .88rem;
+    line-height: 1.35;
+    border-bottom: 1px solid rgba(16,38,61,.08);
+  }
+  .nav a:last-child { border-bottom: 0; }
+  .identity-grid { grid-template-columns: minmax(0,1fr) minmax(0,.95fr); gap: 18px; }
+  .section { padding: 76px 0; }
+  .intro-strip { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 6px 0; }
+  .metric { min-width: 0; }
+  .metric:nth-child(2) { border-right: 0; }
+  .metric:nth-child(3), .metric:nth-child(4) { padding-top: 18px; border-top: 1px solid var(--line); }
+  .culture-grid {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+    grid-template-rows: auto;
+    grid-auto-rows: minmax(210px,auto);
+  }
+  .culture-card { min-width: 0; min-height: 220px; }
+  .culture-card:nth-child(1) { grid-column: 1 / -1; grid-row: auto; min-height: 310px; }
+  .culture-card:nth-child(4) { grid-column: 1 / -1; }
+  .sport-grid, #deporte .sport-grid { grid-template-columns: repeat(2,minmax(0,1fr)); align-items: start; }
+  .sport-card { align-self: start; height: auto; min-width: 0; }
+  .tech-grid, .feature-grid { grid-template-columns: repeat(2,minmax(0,1fr)); align-items: start; }
+  .visual-feature { align-self: start; min-width: 0; }
+  .economy-grid { grid-template-columns: minmax(0,1fr); }
+  .economy-grid > * { min-width: 0; }
+  .facts-grid { grid-template-columns: repeat(3,minmax(0,1fr)); }
+  .fact-card { min-width: 0; overflow-wrap: anywhere; }
+  .recipe-stage { grid-template-columns: minmax(0,1fr); }
+  .recipe-photo-wrap { min-height: 330px; aspect-ratio: 16 / 8; }
+  .recipe-content { min-width: 0; }
+  .recipe-detail-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .map3d-toolbar { align-items: flex-start; }
+  .map3d-toolbar p { min-width: 0; }
+  .source-grid, .sources-list { grid-template-columns: repeat(2,minmax(0,1fr)); }
+}
+
+/* Tablet portrait y móviles grandes: layouts verticales, tipografía fluida. */
+@media (max-width: 820px) {
+  .section-head { display: block; }
+  .section-head p { max-width: 620px; margin-top: 14px; }
+  .identity-grid, .society-grid, .legislation-layout, .law-layout,
+  .economy-grid, .food-grid, .quiz-shell, .two-col { grid-template-columns: minmax(0,1fr); }
+  .map-panel { min-height: 460px; }
+  .identity-map-svg { width: min(100%,420px); }
+  .highlight-card { min-width: 0; }
+  .export-panel { min-width: 0; }
+  .conclusion-card { grid-template-columns: minmax(0,1fr); }
+  .timeline-carousel { max-width: 100%; }
+}
+
+/* Móvil: menos relleno, una columna en datos densos y controles fáciles de tocar. */
+@media (max-width: 760px) {
+  html { scroll-padding-top: 74px; }
+  .topbar { height: 66px; }
+  .topbar-inner { height: 66px; }
+  .brand { font-size: .84rem; gap: 8px; letter-spacing: -.03em; }
+  .brandmark { width: 34px; height: 34px; border-radius: 10px; }
+  .brandmark svg { width: 27px; height: 27px; }
+  .top-actions { gap: 7px; }
+  .menu-btn, .search-btn { width: 40px; min-width: 40px; height: 40px; }
+  .search-btn { display: none; }
+  .nav { top: 66px; max-height: calc(100dvh - 66px); padding: 8px 14px 14px; }
+  .nav.open { display: flex; }
+  .wrap { width: calc(100% - 32px); }
+  .section { padding: 62px 0; }
+  .section-head { margin-bottom: 26px; }
+  .section-head h2 { font-size: clamp(2.05rem,8.2vw,3rem); line-height: 1.06; }
+  .section-intro { font-size: .96rem; }
+  .hero { min-height: 620px; }
+  .hero-content { padding: 65px 0 88px; }
+  .hero-kicker { font-size: .65rem; letter-spacing: .12em; }
+  .hero h1 { font-size: clamp(3.2rem,13.8vw,4.5rem); line-height: .9; overflow-wrap: normal; }
+  .hero-sub { font-size: 1rem; }
+  .hero-buttons { display: flex; flex-direction: column; align-items: stretch; gap: 10px; margin: 25px 0 34px; }
+  .hero-buttons .btn { width: 100%; min-height: 46px; }
+  .hero-foot { align-items: flex-start; gap: 12px; }
+  .hero-foot > div:last-child { min-width: 0; overflow-wrap: anywhere; }
+  .intro-strip { grid-template-columns: repeat(2,minmax(0,1fr)); padding: 16px 13px; gap: 0; margin-top: -28px; }
+  .metric { padding: 12px 10px; border-right: 1px solid var(--line); min-width: 0; }
+  .metric:nth-child(2), .metric:nth-child(4) { border-right: 0; }
+  .metric:nth-child(3), .metric:nth-child(4) { padding-top: 16px; border-top: 1px solid var(--line); }
+  .metric strong { font-size: clamp(1.35rem,6vw,1.8rem); letter-spacing: -.045em; overflow-wrap: anywhere; }
+  .metric span { font-size: .72rem; line-height: 1.4; }
+  .mini-source { font-size: .64rem; line-height: 1.35; }
+  .panel { padding: 19px; }
+  .identity-grid { grid-template-columns: minmax(0,1fr); gap: 14px; }
+  .map-panel { min-height: 380px; padding: 16px 14px 56px; }
+  .identity-map-svg { width: min(100%,350px); }
+  .map-badge { top: 13px; right: 13px; padding: 7px 10px; font-size: .69rem; }
+  .map-caption { left: 15px; right: 15px; bottom: 12px; max-width: none; font-size: .67rem; line-height: 1.4; }
+  .identity-facts { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 9px; }
+  .fact { padding: 13px; min-width: 0; }
+  .fact strong { font-size: .88rem; overflow-wrap: anywhere; }
+  .culture-grid { grid-template-columns: repeat(2,minmax(0,1fr)); grid-auto-rows: minmax(190px,auto); gap: 10px; }
+  .culture-card { min-height: 205px; }
+  .culture-card:nth-child(1) { grid-column: 1 / -1; grid-row: auto; min-height: 250px; }
+  .culture-card:nth-child(4) { grid-column: 1 / -1; }
+  .culture-content { left: 14px; right: 14px; bottom: 13px; }
+  .culture-content h3 { font-size: 1.25rem; }
+  .culture-content p { font-size: .73rem; line-height: 1.45; }
+  .big-emoji { font-size: 2.5rem; }
+  .sport-grid, #deporte .sport-grid, .tech-grid, .feature-grid { grid-template-columns: minmax(0,1fr); gap: 13px; align-items: start; }
+  .sport-card, .feature-card, .visual-feature { align-self: start; width: 100%; height: auto; min-width: 0; }
+  .sport-card .feature-photo, .feature-photo { height: 205px; }
+  .feature-body { padding: 19px 19px 21px; }
+  .feature-body h3 { font-size: 1.18rem; }
+  .feature-body p { line-height: 1.6; }
+  .sport-more summary { min-height: 40px; font-size: .82rem; }
+  .sport-extra { font-size: .83rem; line-height: 1.7; }
+  .sport-extra p { font-size: .83rem; }
+  .two-col, .society-grid, .legislation-layout, .law-layout, .economy-grid, .food-grid, .quiz-shell { grid-template-columns: minmax(0,1fr); gap: 14px; }
+  .bar-row { grid-template-columns: minmax(74px,84px) minmax(32px,1fr) minmax(64px,80px); gap: 7px; font-size: .69rem; }
+  .bar-val { overflow-wrap: anywhere; }
+  .economy-stats { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 8px; }
+  .economic-stat { min-width: 0; padding: 14px; overflow-wrap: anywhere; }
+  .economic-stat strong { font-size: clamp(1.15rem,5vw,1.5rem); overflow-wrap: anywhere; }
+  .export-panel { padding: 19px 15px; }
+  .export-panel .toggle-row { flex-wrap: wrap; }
+  .export-row { grid-template-columns: minmax(0,92px) minmax(30px,1fr) minmax(52px,60px); gap: 6px; font-size: .68rem; }
+  .export-row span { min-width: 0; overflow-wrap: anywhere; line-height: 1.3; }
+  .export-row strong { min-width: 0; font-size: .68rem; }
+  .facts-grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 9px; }
+  .fact-card { padding: 14px; min-height: 0; overflow-wrap: anywhere; }
+  .fact-card .fact-num { font-size: .63rem; letter-spacing: .07em; }
+  .fact-card strong { font-size: clamp(1rem,4.5vw,1.23rem); margin: 13px 0 7px; overflow-wrap: anywhere; }
+  .fact-card p { font-size: .73rem; line-height: 1.5; }
+  .timeline-track .era { flex-basis: calc(100vw - 72px); min-height: 300px; padding: 22px 20px 25px; }
+  .timeline-track .era h3 { font-size: clamp(1.55rem,7vw,1.9rem); }
+  .timeline-track .era p { font-size: .88rem; line-height: 1.65; }
+  .timeline-controls { grid-template-columns: auto minmax(0,1fr); gap: 10px; }
+  .timeline-pagination { grid-row: 2; grid-column: 1 / -1; }
+  .timeline-status { grid-column: 1 / -1; justify-content: space-between; gap: 7px; font-size: .67rem; }
+  .auto-toggle { padding: 8px 10px; font-size: .68rem; }
+  .timeline-carousel.is-full .timeline-track { grid-template-columns: minmax(0,1fr); }
+  .timeline-carousel.is-full .timeline-track .era { padding: 20px; }
+  .recipe-stage { grid-template-columns: minmax(0,1fr); }
+  .recipe-photo-wrap { min-height: 260px; aspect-ratio: 4 / 3; }
+  .recipe-content { padding: 21px 16px 19px; }
+  .recipe-content > h3 { font-size: clamp(2rem,9vw,2.4rem); }
+  .recipe-detail-grid { grid-template-columns: minmax(0,1fr); gap: 20px; }
+  .recipe-detail .ingredient-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .recipe-navigation { grid-template-columns: auto minmax(0,1fr); gap: 10px; padding: 13px; }
+  .recipe-dots { grid-row: 2; grid-column: 1 / -1; flex-wrap: wrap; }
+  .recipe-position { font-size: .68rem; white-space: normal; }
+  .source-grid, .sources-list { grid-template-columns: minmax(0,1fr); }
+  .map3d-frame { height: clamp(560px,74svh,740px); }
+  .map3d-toolbar .btn { width: 100%; justify-content: center; }
+  .map3d-toolbar p { font-size: .84rem; }
+  .conclusion-card { grid-template-columns: minmax(0,1fr); gap: 20px; padding: 25px 20px; }
+  .conclusion-card h2 { font-size: clamp(2.25rem,10vw,3.4rem); }
+  .conclusion-card:after { font-size: 11rem; bottom: -34px; }
+  .lesson { align-items: flex-start; }
+  .quiz-intro, .question-card { padding: 20px; }
+  .quiz-bottom { align-items: stretch; flex-direction: column; }
+  .quiz-bottom .btn { width: 100%; }
+  .votes { gap: 8px; }
+  .vote { padding: 12px; min-width: 0; }
+  .vote strong { font-size: 1.35rem; }
+  .qr-layout { grid-template-columns: minmax(0,1fr); }
+  .qr-box { width: 100%; min-width: 0; }
+  .qr-controls { flex-direction: column; }
+  .qr-controls .btn { width: 100%; }
+  .footer-inner { align-items: flex-start; flex-direction: column; }
+  .footer-links { gap: 12px; }
+}
+
+@media (max-width: 420px) {
+  .wrap { width: calc(100% - 26px); }
+  .hero { min-height: 600px; }
+  .hero h1 { font-size: clamp(3rem,13.8vw,3.7rem); }
+  .hero-kicker { font-size: .6rem; letter-spacing: .09em; }
+  .hero-foot { font-size: .73rem; }
+  .intro-strip { padding: 12px 9px; }
+  .metric { padding: 11px 8px; }
+  .metric strong { font-size: clamp(1.2rem,5.7vw,1.55rem); }
+  .fact-card { padding: 12px; }
+  .fact-card .fact-num { font-size: .58rem; }
+  .bar-row { grid-template-columns: 72px minmax(26px,1fr) 68px; font-size: .65rem; gap: 6px; }
+  .export-row { grid-template-columns: minmax(0,80px) minmax(20px,1fr) minmax(45px,54px); font-size: .63rem; }
+  .export-row strong { font-size: .64rem; }
+  .timeline-track .era { flex-basis: calc(100vw - 58px); padding: 20px 17px 22px; }
+  .recipe-detail .ingredient-grid { grid-template-columns: minmax(0,1fr); }
+}
+
+@media (max-width: 350px) {
+  .brand { font-size: .78rem; }
+  .top-actions { gap: 5px; }
+  .menu-btn { width: 37px; min-width: 37px; }
+  .intro-strip { grid-template-columns: minmax(0,1fr); }
+  .metric, .metric:nth-child(2), .metric:nth-child(3), .metric:nth-child(4) { border-right: 0; border-top: 1px solid var(--line); padding: 12px 10px; }
+  .metric:first-child { border-top: 0; }
+  .metric strong { font-size: 1.5rem; }
+  .facts-grid { grid-template-columns: minmax(0,1fr); }
+  .economy-stats { grid-template-columns: minmax(0,1fr); }
+  .q-top { flex-wrap: wrap; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}
+
 </style>
 </head>
 <body>
